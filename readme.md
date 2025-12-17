@@ -84,6 +84,9 @@ pip install -e .
 
 ## 🚀 Getting Started
 
+> [!NOTE]  
+> The model will soon be available on Hugging Face! 🤗  Stay tuned for the official release.
+
 ### Command-Line Interface (CLI)
 
 VoxTell provides a convenient command-line interface for running predictions:

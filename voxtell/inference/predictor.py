@@ -382,21 +382,30 @@ class VoxTellPredictor:
 
 
 if __name__ == '__main__':
+    from pathlib import Path
     from nnunetv2.imageio.nibabel_reader_writer import NibabelIOWithReorient
 
-    img, props = NibabelIOWithReorient().read_images([f"/home/m574s/netdrives/E132-Rohdaten/nnUNetv2/Dataset255_MSWAL/imagesTr/MSWAL_0485_0000.nii.gz"])
-
+    # Default paths - modify these as needed
+    DEFAULT_IMAGE_PATH = "/path/to/your/image.nii.gz"
+    DEFAULT_MODEL_DIR = "/path/to/your/model/directory"
+    
+    # Configuration
+    image_path = DEFAULT_IMAGE_PATH
+    model_dir = DEFAULT_MODEL_DIR
     text_prompts = ["liver", "right kidney", "left kidney", "spleen"]
-
-    pred = VoxTellPredictor(
-        model_dir="/home/m574s/netdrives/E132-Projekte/Projects/2024_Max_Moritz_Grounding/checkpoints/zweiter_versuch/GroundiSegTrainer_Multi5StageMaskFormerDS_mp3_h32_qD2048_pD2048__nnUNetResEncUNetLPlans_noResampling__3d_fullres_bs8/",
-        device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    )
-    voxtell_seg = pred.predict_single_image(img, text_prompts)
-
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    
+    # Load image
+    img, props = NibabelIOWithReorient().read_images([image_path])
+    
+    # Initialize predictor and run inference
+    predictor = VoxTellPredictor(model_dir=model_dir, device=device)
+    voxtell_seg = predictor.predict_single_image(img, text_prompts)
+    
+    # Visualize results, we reccommend using napari for 3D visualization
     import napari
     viewer = napari.Viewer()
     viewer.add_image(img, name='image')
-    for i, txt in enumerate(text_prompts):
-        viewer.add_labels(voxtell_seg[i].astype(np.uint8), name=f'voxtell_{txt}')
+    for i, prompt in enumerate(text_prompts):
+        viewer.add_labels(voxtell_seg[i], name=f'voxtell_{prompt}')
     napari.run()
