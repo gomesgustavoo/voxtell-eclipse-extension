@@ -5,7 +5,8 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2511.11450-B31B1B.svg)](https://arxiv.org/abs/2511.11450)&#160;
 [![GitHub](https://img.shields.io/badge/GitHub-VoxTell-181717?logo=github&logoColor=white)](https://github.com/MIC-DKFZ/VoxTell)&#160;
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Model-VoxTell-yellow)](https://huggingface.co/mrokuss/VoxTell)&#160;
-[![napari](https://img.shields.io/badge/napari-plugin-80d1ff)](https://github.com/MIC-DKFZ/napari-voxtell)
+[![web tool](https://img.shields.io/badge/web-tool-4CAF50)](https://github.com/gomesgustavoo/voxtell-web-plugin)&#160;
+[![napari](https://img.shields.io/badge/napari-plugin-80d1ff)](https://github.com/MIC-DKFZ/napari-voxtell)&#160;
 
 </div>
 
@@ -21,6 +22,12 @@ VoxTell is a **3D vision–language segmentation model** that directly maps free
 > **Paper**: [![arXiv](https://img.shields.io/badge/arXiv-2511.11450-B31B1B.svg)](https://arxiv.org/abs/2511.11450)
 
 ---
+
+## 📰 News
+
+- **02/2026**: 🎉 The community built a VoxTell web interface - thank you! 👉 [voxtell-web-plugin](https://github.com/gomesgustavoo/voxtell-web-plugin)
+- **01/2026**: 🧩 Model checkpoint **v1.1** released and now available with official napari plugin 👉 [napari-voxtell](https://github.com/MIC-DKFZ/napari-voxtell)
+- **12/2025**: 🚀 `VoxTell` launched with a **Python backend** and **PyPI package** (`pip install voxtell`)
 
 ## Overview
 
@@ -64,7 +71,7 @@ conda activate voxtell
 
 > [!WARNING]
 > **Temporary Compatibility Warning**  
-> There is a known issue with **PyTorch 2.9.0** causing **OOM errors during inference** in `nnInteractive` (related to 3D convolutions — see the PyTorch issue [here](https://github.com/pytorch/pytorch/issues/166122)).  
+> There is a known issue with **PyTorch 2.9.0** causing **OOM errors during inference** (related to 3D convolutions — see the PyTorch issue [here](https://github.com/pytorch/pytorch/issues/166122)).  
 > **Until this is resolved, please use PyTorch 2.8.0 or earlier.**
 
 Install PyTorch compatible with your CUDA version. For example, for Ubuntu with a modern NVIDIA GPU:
