@@ -1,4 +1,4 @@
-# VoxTell: Free-Text Promptable Universal 3D Medical Image Segmentation
+# [CVPR2026] VoxTell: Free-Text Promptable Universal 3D Medical Image Segmentation
 
 <div align="center">
 
@@ -25,6 +25,7 @@ VoxTell is a **3D vision–language segmentation model** that directly maps free
 
 ## 📰 News
 
+- **02/2026**: 📄 VoxTell was accepted at CVPR 2026!
 - **02/2026**: 🎉 The community built a VoxTell web interface - thank you! 👉 [voxtell-web-plugin](https://github.com/gomesgustavoo/voxtell-web-plugin)
 - **01/2026**: 🧩 Model checkpoint **v1.1** released and now available with official napari plugin 👉 [napari-voxtell](https://github.com/MIC-DKFZ/napari-voxtell)
 - **12/2025**: 🚀 `VoxTell` launched with a **Python backend** and **PyPI package** (`pip install voxtell`)
