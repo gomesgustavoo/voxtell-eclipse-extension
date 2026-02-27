@@ -66,7 +66,9 @@ class VoxTellPredictor:
 
         # Embedding model
         self.tokenizer = AutoTokenizer.from_pretrained(text_encoding_model, padding_side='left')
-        self.text_backbone = AutoModel.from_pretrained(text_encoding_model).eval()
+        self.text_backbone = AutoModel.from_pretrained(
+            text_encoding_model, torch_dtype=torch.float16
+        ).eval()
         self.max_text_length = 8192
 
         # Load network settings

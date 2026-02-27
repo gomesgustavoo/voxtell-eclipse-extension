@@ -65,7 +65,14 @@ voxtell-predict = "voxtell.inference.predict_from_raw_data:main"
 dev = [
     "black",
     "ruff",
-    "pre-commit"
+    "pre-commit",
+]
+api = [
+    "fastapi>=0.100,<1",
+    "uvicorn[standard]>=0.20",
+    "pydantic-settings>=2.0,<3",
+    "scikit-image>=0.21",
+    "python-multipart>=0.0.7",
 ]
 
 [build-system]
