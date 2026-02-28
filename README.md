@@ -19,7 +19,6 @@ This project is a **fork of the original VoxTell model** ([MIC-DKFZ/VoxTell](htt
 - [Setup & Running](#setup--running)
 - [Configuration](#configuration)
 - [Proprietary DLL Notice](#proprietary-dll-notice)
-- [About VoxTell](#about-voxtell)
 - [License](#license)
 
 ---
