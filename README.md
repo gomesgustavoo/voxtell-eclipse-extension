@@ -42,26 +42,26 @@ The API exposes a **session-based, async workflow** so that the .NET ESAPI scrip
 
 ```
 ┌─────────────────────────────────────────────────┐
-│              Varian Eclipse (Windows)            │
-│                                                  │
-│  C# ESAPI Script (VoxTell-Interface)             │
-│  ├─ VoxelEncoder   → base64(gzip(int32-LE))      │
-│  ├─ VoxTellApiClient → HTTP calls to this API    │
+│              Varian Eclipse (Windows)           │
+│                                                 │
+│  C# ESAPI Script (VoxTell-Interface)            │
+│  ├─ VoxelEncoder   → base64(gzip(int32-LE))     │
+│  ├─ VoxTellApiClient → HTTP calls to this API   │
 │  └─ EsapiStructureImporter → apply LPS contours │
 └───────────────────┬─────────────────────────────┘
                     │ HTTP/JSON (LAN or localhost)
 ┌───────────────────▼─────────────────────────────┐
-│            VoxTell Backend  (this repo)          │
-│                                                  │
-│  POST  /sessions              ← volume metadata  │
-│  PUT   /sessions/{id}/slices  ← one slice each   │
-│  POST  /sessions/{id}/finalize ← assemble NIfTI  │
-│  POST  /inference             ← text prompts     │
-│  GET   /inference/{job_id}    ← poll results     │
-│                                                  │
-│  nifti_builder  → coord conversion + .nii.gz     │
-│  voxtell_worker → VoxTell model inference        │
-│  contour_utils  → masks → LPS contour points     │
+│            VoxTell Backend  (this repo)         │
+│                                                 │
+│  POST  /sessions              ← volume metadata │
+│  PUT   /sessions/{id}/slices  ← one slice each  │
+│  POST  /sessions/{id}/finalize ← assemble NIfTI │
+│  POST  /inference             ← text prompts    │
+│  GET   /inference/{job_id}    ← poll results    │
+│                                                 │
+│  nifti_builder  → coord conversion + .nii.gz    │
+│  voxtell_worker → VoxTell model inference       │
+│  contour_utils  → masks → LPS contour points    │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -222,8 +222,6 @@ Or copy `.env.example` to `.env`, fill in the values, and just run `bash run.sh`
 
 The API will be available at `http://0.0.0.0:8000`.
 
-> **Note:** Always use `--workers 1`. The in-memory session/job store and the single model instance are not safe to share across OS processes.
-
 ---
 
 ## Configuration
@@ -264,6 +262,20 @@ VoxTell is developed by the [Medical Image Computing Lab (MIC)](https://www.dkfz
 - **Paper:** [arXiv:2511.11450](https://arxiv.org/abs/2511.11450)
 - **Original repository:** [MIC-DKFZ/VoxTell](https://github.com/MIC-DKFZ/VoxTell)
 
-If you use this work, please cite the original VoxTell paper.
+> **Rokuss et al.** (2025). *VoxTell: Free-Text Promptable Universal 3D Medical Image Segmentation*. arXiv:2511.11450.
+
+```bibtex
+@misc{rokuss2025voxtell,
+  title={VoxTell: Free-Text Promptable Universal 3D Medical Image Segmentation}, 
+  author={Maximilian Rokuss and Moritz Langenberg and Yannick Kirchhoff and Fabian Isensee and Benjamin Hamm and Constantin Ulrich and Sebastian Regnery and Lukas Bauer and Efthimios Katsigiannopulos and Tobias Norajitra and Klaus Maier-Hein},
+  year={2025},
+  eprint={2511.11450},
+  archivePrefix={arXiv}
+}
+```
+Thanks Max and Moritz for developing this amazing work.
+
+If you use this work, please let me know:
+📧 https://www.linkedin.com/in/gustavoogomesss/ 
 
 The Python source code in this repository (the `api/` package) is original work and is released under the **Apache 2.0 License** (see [LICENSE](LICENSE)), consistent with the upstream VoxTell project.
